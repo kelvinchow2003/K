@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useInView } from 'react-intersection-observer'; 
-import { Briefcase, Code, Terminal, Send, Menu, X, Sun, Moon, Link, Github, Zap, Loader, Aperture, Volume2, Download } from 'lucide-react';
+import { Briefcase, Code, Terminal, Send, Menu, X, Sun, Moon, Link, Github, Zap, Loader, Aperture, Volume2, Download, HeartHandshake } from 'lucide-react';
+import { projectsData, experienceData, skillGroups, groupedCommunityData } from './data/portfolioData';
 
 // --- TTS UTILITIES (for converting PCM audio from API to playable WAV format) ---
 
@@ -52,100 +53,7 @@ const pcmToWav = (pcm16, sampleRate) => {
 
     return new Blob([view], { type: 'audio/wav' });
 };
-
-
-// --- MOCK DATA ---
-const projectsData = [
-  {
-    id: 1,
-    title: "Income Prediction Model",
-    description: "Built income classification models using the Adult Income dataset with 5 ML algorithms (SVM, Logistic Regression, etc.). Handled data cleaning, scaling, and feature selection (RFE). Achieved 84% accuracy with SVM.",
-    tags: ["Machine Learning", "Python", "Scikit-learn", "Pandas", "Data Mining"],
-    githubUrl: "https://github.com/kelvinchow2003/Adult_Incone_Prediction", 
-    liveUrl: "#"
-  },
-  {
-    id: 2,
-    title: "Laptop Configuration Automation",
-    description: "Developed a PowerShell-based solution to streamline pre-domain setup for Windows 11 desktops and laptops. Automated critical tasks like system configuration, updates, firewall management, and application deployment, reducing manual setup time.",
-    tags: ["PowerShell", "Automation", "Windows", "IT Operations"],
-    githubUrl: "https://github.com/kelvinchow2003/IT_Automation",
-    liveUrl: "#"
-  },
-  {
-    id: 3,
-    title: "Kiosk Lockdown Configurator",
-    description: "Creates and configures secure Kiosk mode for Windows computers, limiting user access to a single landing page and enforcing application security via tools like Logon Expert. Implemented using PowerShell and HTML for a streamlined deployment.",
-    tags: ["Powershell, HTML, Windows, Logon Expert"],
-    githubUrl: "https://github.com/kelvinchow2003/Kiosk_Setup",
-    liveUrl: "#"
-  },
-  {
-    id: 4,
-    title: "Falling Trend Stock ETL",
-    description: "Fetches high volume major top stocks as recommendations for purchasing.",
-    tags: ["Python, API"],
-    githubUrl: "https://github.com/kelvinchow2003/Stock_ETL",
-    liveUrl: "#"
-  },
-  
-];
-
-const experienceData = [
-  {
-    id: 1,
-    year: "May 2025 - Present",
-    title: "System Support Engineer",
-    company: "Toronto Parking Authority (GreenP)",
-    details: "Delivered L1, L2, and L3 technical support, assisted with cybersecurity (CrowdStrike, Symantec), and developed automation scripts (Intune, PowerShell) to streamline system configuration and improve operational efficiency. Participated in AI-driven customer support solutions (Co-pilot, Power Apps).",
-    logoUrl: "./TPA.png" 
-  },
-  {
-    id: 2,
-    year: "Sept 2023 - Sept 2024",
-    title: "Junior Developer",
-    company: "Green and Spiegel LLP",
-    details: "Designed and implemented a secure client intake web portal (AWS, Rest API) and automated dynamic PDF generation using SQL, Python, and Java, which reduced manual workload by 53%. Contributed to code optimization through thorough code reviews.",
-    logoUrl: "./Gands.png" 
-  },
-  {
-    id: 3,
-    year: "May 2023 - Sept 2023",
-    title: "Information Technology Co-op",
-    company: "Bothwell Accurate Co. Inc.",
-    details: "Provided comprehensive technical support (resolving over 200 issues) and automated onboarding processes for new employees by developing and deploying robust shell scripts, significantly streamlining IT operations.",
-    logoUrl: "./Bothwell.png" 
-  },
-  {
-    id: 4,
-    year: "April 2021 - Present",
-    title: "Bachelors of Science Computer Science Co-op",
-    company: "Toronto Metropolitan University",
-    details: "Engaged in advanced coursework and projects in algorithms, data structures, machine learning, and software development. Collaborated on team projects using Agile methodologies and version control (Git).",
-    logoUrl: "./TMU.png" 
-  },
-  {
-    id: 5,
-    year: "Sept 2019 - Present",
-    title: "Aquatic Supervisor II",
-    company: "City Of Markham",
-    details: "Managed aquatic safety operations, supervised staff, and ensured compliance with health and safety regulations at community pools. Developed leadership and crisis management skills in a dynamic environment.",
-    logoUrl: "./markham.png" 
-  },
-];
-
-const skillGroups = {
-    "Languages & Core": ["Python", "Java", "C", "SQL", "Javascript", "HTML", "CSS"],
-    "Frameworks & Data": ["React", "Scikit-learn", "Pandas", "Jupyter"],
-    "DevOps & Automation": ["PowerShell", "Bash", "GIT", "Active Directory", "Intune", "Docker "], 
-    "Cloud & Tools": ["AWS Cloud Practitioner", "Azure AI (In-progress)", "AWS Data Engineer (In-progress)", "Office 365", "Co-pilot", "Power Apps"],
-};
-
-// --- Custom Components ---
-
-/**
- * LinkedIn Icon Component (Custom SVG) - MEMOIZED
- */
+/* Linkedin*/
 const LinkedIn = React.memo(({ size = 24, className = "" }) => (
     <svg 
         xmlns="http://www.w3.org/2000/svg" 
@@ -581,7 +489,7 @@ const AiAssistantDemo = ({ isDark }) => {
             LLM Technical Assistant (Demo)
         </h3>
         <p className="text-sm text-gray-700 dark:text-gray-200 mb-4">
-            Ask a technical question to see the Gemini API in action.
+            Ask a technical question to see the AI chatbot in action.
         </p>
       </div>
       
@@ -672,6 +580,7 @@ const App = () => {
     { name: "Skills", href: "#skills" },
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
+    { name: "Service", href: "#community" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -835,8 +744,8 @@ const About = React.memo(() => (
              hover:border-violet-500/30 dark:hover:border-emerald-500/30"> {/* <-- NEW CLASSES ADDED */}
           
           <p className="mb-4 text-gray-700 dark:text-white text-base sm:text-lg"> 
-            I am a highly motivated BSc. in Computer Science Co-op student with experience across System Engineering, Cloud Solutions, full-stack development, and data-driven projects. My core expertise lies in developing robust automation scripts (PowerShell, Bash) and leveraging languages like Python, Java, and SQL to solve real-world operational challenges.
-          </p>
+             am a highly motivated BSc. in Computer Science Co-op student with experience across System Engineering, Cloud Solutions, full-stack development, and data driven projects. My core expertise lies in developing robust automation scripts and leveraging languages like Python, Java, and SQL to solve real-world operational challenges.
+          </p>I
           <p className="text-gray-700 dark:text-white text-base sm:text-lg"> 
             I excel in environments that demand both technical troubleshooting and strategic software implementation, demonstrated by my work in automating PDF generation (reducing workload by 53%) and implementing secure web portals. I am dedicated to continuous learning, currently pursuing the AWS Data Engineer and Azure AI Engineer certifications.
           </p>
@@ -888,6 +797,7 @@ const About = React.memo(() => (
       </div>
     </Section>
   ));
+
 
   // --- EXPERIENCE SECTION (Timeline) - MEMOIZED ---
 const Experience = React.memo(() => (
@@ -1035,6 +945,42 @@ const Experience = React.memo(() => (
         </Section>
     );
   });
+// --- COMMUNITY INVOLVEMENT SECTION 
+const CommunityInvolvement = React.memo(() => (
+    <Section id="community" title="Community & Lifesaving Service">
+      <div className="space-y-10 sm:space-y-12">
+        <p className="text-lg text-gray-700 dark:text-white max-w-3xl">
+            My dedication to skill mastery extends beyond my tech career, encompassing over a decade of hands-on experience in aquatics and lifesaving. My time spent teaching, along with spreading awarness for first aid and aquautic accident pervention gives me the oppurtunity to give back to my community. 
+        </p>
+        {/* Uses the imported groupedCommunityData */}
+        {Object.entries(groupedCommunityData).map(([category, items]) => (
+          <div key={category}>
+            {/* Group header icon/text color flip */}
+            <h3 className="text-xl sm:text-2xl font-semibold mb-5 sm:mb-6 text-gray-900 dark:text-white flex items-center space-x-3">
+                <HeartHandshake size={24} className="text-violet-600 dark:text-emerald-400" />
+                <span>{category}</span>
+            </h3>
+            
+            {/* Display Items in a clean grid/list */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {items.map(item => (
+                <div
+                  key={item.name}
+                  className="p-4 bg-gray-100/70 dark:bg-gray-800/90 rounded-lg shadow-inner border border-gray-300 dark:border-gray-700/20 backdrop-blur-sm transition duration-300 hover:bg-violet-500/10 dark:hover:bg-emerald-500/10 hover:shadow-lg"
+                >
+                  <p className="text-base font-bold text-gray-900 dark:text-white">{item.name}</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                    <span className="font-semibold">Issued:</span> {item.issued} | 
+                    <span className="font-semibold ml-2">Expires:</span> {item.expires}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+));
 
   // --- CONTACT SECTION - MEMOIZED (Updated to remove LLM demo and improve aesthetics) ---
 const Contact = React.memo(({ isDark }) => (
@@ -1149,6 +1095,7 @@ const Contact = React.memo(({ isDark }) => (
             <Skills />
             <Experience />
             <Projects isDark={isDark} /> 
+            <CommunityInvolvement />
             <Contact /> 
         </main>
         <Footer />
