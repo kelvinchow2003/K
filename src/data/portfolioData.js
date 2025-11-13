@@ -39,6 +39,22 @@ export const projectsData = [
     githubUrl: "https://github.com/kelvinchow2003/Stock_ETL",
     liveUrl: "#"
   },
+  {
+    id: 6,
+    title: "Palette Pilot",
+    description: "This is a web app designed to generate a random colour palette along with an image uploader to help find exact hex colours within that image.",
+    tags: ["HTML", "JavaScript", "Fonts API", "Tailwind CSS"],
+    githubUrl: "https://github.com/kelvinchow2003/Pallete-Pilot",
+    liveUrl: "https://kelvinchow2003.github.io/Pallete-Pilot/"
+  },
+  {
+    id: 7,
+    title: "Background Remover",
+    description: "This is a web app designed to allow a user to upload an image, crop the image into a transparant background. Ideally for presentation, web-logo use",
+    tags: ["HTML", "JavaScript", "Fonts API", "Tailwind CSS", "Firebase"],
+    githubUrl: "https://github.com/kelvinchow2003/Background-Remover",
+    liveUrl: "https://kelvinchow2003.github.io/Background-Remover/"
+  },
 
   
   
