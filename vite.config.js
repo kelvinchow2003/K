@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // Must match your repo path exactly:
-const repositoryName = '/k/'
+const repositoryName = '/K/'
 
 export default defineConfig({
   base: repositoryName,

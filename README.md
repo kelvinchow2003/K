@@ -47,8 +47,8 @@ You will need `Node.js` and `npm` (or `yarn`) installed on your computer.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/kelvinchow2003/kelvin-portfolio-2025.git](https://github.com/kelvinchow2003/kelvin-portfolio-2025.git)
-    cd kelvin-portfolio-2025
+    git clone [https://github.com/kelvinchow2003/kelvin-portfolio-2025.git](https://github.com/kelvinchow2003/K.git)
+    cd K
     ```
 
 2.  **Install dependencies:**
