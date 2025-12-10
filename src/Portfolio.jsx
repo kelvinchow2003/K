@@ -149,9 +149,8 @@ const ProjectModal = ({ project, onClose, isDark }) => {
             parts: [{ text: systemPrompt }]
         },
     };
-
-    const apiKey = "AIzaSyDEJ_43E-5MxHXo52KhSM66g6ieHcZd0_A";
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+      
+    const apiUrl = "https://kelvin-portfolio-api.vercel.app/api/gemini";
 
     let response = null;
     let success = false;
